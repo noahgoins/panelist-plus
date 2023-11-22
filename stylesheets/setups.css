@@ -1,0 +1,51 @@
+@keyframes setup-warning-frames {
+    from {
+        border-color: rgb(200, 13, 13);
+        color: rgb(200, 13, 13);
+        background-color: rgb(215, 141, 141);
+    }
+    to {
+        border-color: rgb(230, 13, 13);
+        color: rgb(230, 13, 13);
+        background-color: rgb(245, 141, 141);
+    }
+}
+
+.setups-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.setup-element {
+    border: 2px solid rgb(34, 34, 34);
+    border-radius: 100%;
+    padding: 5px;
+    width: 60px;
+    height: 60px;
+    font-size: 48px;
+    text-align: center;
+    margin: 10px;
+}
+.setup-open {
+    border-color: rgb(56, 104, 48);
+    color: rgb(56, 104, 48);
+    background-color: rgb(123, 224, 109);
+}
+.setup-inuse {
+    border-color: rgb(198, 201, 0);
+    color: rgb(198, 201, 0);
+    background-color: rgb(234, 245, 141);
+}
+.setup-warning {
+    animation-name: setup-warning-frames;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+.setup-closed {
+    border-color: rgb(48, 48, 48);
+    color: rgb(48, 48, 48);
+    background-color: rgb(201, 201, 201);
+}

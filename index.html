@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TO Companion Prototype</title>
+        <link rel="stylesheet" href="stylesheets/main.css">
+        <link rel="stylesheet" href="stylesheets/setups.css">
+    </head>
+    <body style="max-width:50%; margin:auto;">
+        <table>
+            <div class="section">
+                <h2 style="text-align: center;">Start Tournament Session</h2>
+                <form method="post">
+                    <label for="apikey">API Key (start.gg): </label>
+                    <input type="text" id="apikey" name="apikey"><br>
+                    <label for="tlink">Tournament Link (start.gg): </label>
+                    <input type="text" id="tlink" name="tlink"><br>
+                    <label for="time_warning">Time Warning on Sets (minutes): </label>
+                    <input type="number" id="time_warning" name="time_warning" min="1" max="60" value="20"><br>
+                    <input type="hidden" id="form_id" name="form_id" value="begin_session">
+                    <input type="submit" value="Begin">
+                </form>
+            </div>
+            <div style="display:flex;">
+                <div class="section" style="width:50%; display:inline;">
+                    <h2>Tournament Information</h2>
+                    <b>Name: </b><br>
+                    <b>Game: </b><br>
+                    <b>Attendees: </b><br>
+                    <b>Events: </b><br>
+                    <b>Pools: </b><br>
+                    <b>Valid: </b><br>
+                </div>
+                <div class="section" style="width:50%">
+                    <h2>Tournament Page QR Code</h2>
+                    <img src="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0" style="display:block; width:auto; height:auto; margin:auto;" />
+                </div>
+            </div>
+            <div style="display:flex;">
+                <div class="section" style="width:50%; display:inline;">
+                    <h2>Next Sets to Play</h2>
+                    <div class="section" style="display:flex;">
+                        <div style="font-size: 24px; margin-right: 10px;"><b>A</b></div>
+                        <div style="display:inline; font-size: 18px;">
+                            <span>(16) </span><span>IvanTheSpaceBiker</span><br>
+                            <span>(17) </span><span>Kill Me</span>
+                        </div>
+                        <div style="flex-grow: 1;"><button style="float: right; height: 100%; width: 100px; font-weight:bold;">Start</button></div>
+                    </div>
+                    <div class="section" style="display:flex;">
+                        <div style="font-size: 24px; margin-right: 10px;"><b>B</b></div>
+                        <div style="display:inline; font-size: 18px;">
+                            <span>(8) </span><span>C++</span><br>
+                            <span>(25) </span><span>SomeDude</span>
+                        </div>
+                        <div style="flex-grow: 1;"><button style="float: right; height: 100%; width: 100px; font-weight:bold;">Start</button></div>
+                    </div>
+                    <div class="section" style="display:flex;">
+                        <div style="font-size: 24px; margin-right: 10px;"><b>J</b></div>
+                        <div style="display:inline; font-size: 18px;">
+                            <span>(7) </span><span>CryBaby</span><br>
+                            <span>(26) </span><span>Soulless</span>
+                        </div>
+                        <div style="flex-grow: 1;"><button style="float: right; height: 100%; width: 100px; font-weight:bold;">Start</button></div>
+                    </div>
+                </div>
+                <div class="section" style="width:50%">
+                    <h2>Station Status</h2>
+                    <div class="setups-container">
+                        <div class="setup-element setup-open">1</div>
+                        <div class="setup-element setup-inuse">2</div>
+                        <div class="setup-element setup-inuse">3</div>
+                        <div class="setup-element setup-open">4</div>
+                        <div class="setup-element setup-warning">5</div>
+                        <div class="setup-element setup-open">6</div>
+                        <div class="setup-element setup-open">7</div>
+                        <div class="setup-element setup-closed">8</div>
+                        <div class="setup-element setup-open">9</div>
+                        <div class="setup-element setup-closed">10</div>
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;">
+                <div class="section" style="width:50%; display:inline;">
+                    <h2>Sets In Action</h2>
+                </div>
+                <div class="section" style="width:50%">
+                    <h2>Report Set</h2>
+                </div>
+            </div>
+        </table>
+    </body>
+</html>
