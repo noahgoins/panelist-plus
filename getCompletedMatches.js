@@ -1,12 +1,23 @@
 // Searches for and collects all completed matches for an event
 
+
 require('dotenv').config();
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const startggURL = "https://api.start.gg/gql/alpha"
 apiKey = process.env.STARTGG_API_KEY;
 
+//sleep function
+//I found it much easier to put it here for the time being than import it from another file -Jackson
+const sleep = (ms) => {
+    const date = Date.now()
+    let currentDate = null
+    do {
+        currentDate = Date.now()
+    } while (currentDate - date < ms)
+}
+
 module.exports = {
-    getCompletedMatches: async function(eventId) {
+        getCompletedMatches: async function(eventId) {
         let numMatches;            // counter variable
         let numMatchesFound = 0;   // total number of matches identified
         let pageNumber = 1;        // number on page for search query results
@@ -31,7 +42,8 @@ module.exports = {
             numMatches = data.data.event.sets.pageInfo.total
         })
 
-        Sleep.sleep(1000);
+        
+        sleep(1000);
 
         while (numMatchesFound < numMatches) {
             await fetch(startggURL, {
@@ -63,7 +75,7 @@ module.exports = {
             })
             pageNumber += 1;
             numMatchesFound += 50;
-            Sleep.sleep(1000);
+            sleep(1000);
         }
     }
 }
