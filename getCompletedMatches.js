@@ -41,7 +41,7 @@ module.exports = {
         .then(data => {
             numMatches = data.data.event.sets.pageInfo.total
         })
-
+        
         
         sleep(1000);
 
@@ -54,7 +54,7 @@ module.exports = {
                         Authorization: 'Bearer ' + process.env.STARTGG_API_KEY
                     },
                     body: JSON.stringify({
-                        query: "query EventSets($eventId: ID!, $page: Int!, $perPage: Int!) { event(id: $eventId) {sets(page: $page perPage: $perPage sortType: STANDARD) {nodes { slots { entrants { name } standing { stats { score { value }}}}}}}}",
+                        query: "query EventSets($eventId: ID!, $page: Int!, $perPage: Int!) { event(id: $eventId) {sets(page: $page perPage: $perPage sortType: STANDARD) {nodes { slots { entrant { name } standing { stats { score { value }}}}}}}}",
                         variables: {
                             eventId: eventId,
                             page: pageNumber,
@@ -68,8 +68,10 @@ module.exports = {
                     loopCondition = numMatches - numMatchesFound;
                 }
                 for (let i = 0; i < loopCondition; i++) {
-                    console.log('${data.data.event.sets.nodes[i].slots[0].entrant.name} data.data.event.sets.nodes[i].slots[0].standing.stats.score.value - data.data.event.sets.nodes[i].slots[1].standing.stats.score.value data.data.event.sets.nodes[i].slots[1].entrant.name');
+                    //console.log('${data.data.event.sets.nodes[i].slots[0].entrant.name} data.data.event.sets.nodes[i].slots[0].standing.stats.score.value - data.data.event.sets.nodes[i].slots[1].standing.stats.score.value data.data.event.sets.nodes[i].slots[1].entrant.name');
+                    console.log(data.data.event.sets.nodes[i].slots[0].entrant.name)
                 }
+
             }).catch(err =>{
                 console.log(err);
             })
