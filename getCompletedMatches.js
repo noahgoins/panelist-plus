@@ -5,6 +5,7 @@ require('dotenv').config();
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const startggURL = "https://api.start.gg/gql/alpha"
 apiKey = process.env.STARTGG_API_KEY;
+//const Sleep = require('./Sleep');
 
 //sleep function
 //I found it much easier to put it here for the time being than import it from another file -Jackson
@@ -68,8 +69,11 @@ module.exports = {
                     loopCondition = numMatches - numMatchesFound;
                 }
                 for (let i = 0; i < loopCondition; i++) {
-                    //console.log('${data.data.event.sets.nodes[i].slots[0].entrant.name} data.data.event.sets.nodes[i].slots[0].standing.stats.score.value - data.data.event.sets.nodes[i].slots[1].standing.stats.score.value data.data.event.sets.nodes[i].slots[1].entrant.name');
-                    console.log(data.data.event.sets.nodes[i].slots[0].entrant.name)
+                    //sure looks a lot cleaner printed out like this than it used to lol
+                    console.log(data.data.event.sets.nodes[i].slots[0].entrant.name,data.data.event.sets.nodes[i].slots[0].standing.stats.score.value,'-',data.data.event.sets.nodes[i].slots[1].standing.stats.score.value,data.data.event.sets.nodes[i].slots[1].entrant.name)
+                    console.log(" ");
+                    
+
                 }
 
             }).catch(err =>{

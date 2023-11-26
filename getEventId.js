@@ -6,6 +6,7 @@ apiKey = process.env.STARTGG_API_KEY;
 module.exports = {
     getEventId: function(tournamentName, eventName) {
         const eventSlug = `tournament/${tournamentName}/event/${eventName}`;
+
         let eventId;
         fetch(startggURL, {
                   method: 'POST',
@@ -23,6 +24,7 @@ module.exports = {
               }).then(r => r.json())
               .then(data => {
                   console.log(data.data);
+
                   eventId = data.data.event.id
               })
         return eventId;
