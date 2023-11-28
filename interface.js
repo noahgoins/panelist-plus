@@ -18,7 +18,7 @@ $(document).ready(function(){
     });
     $('#resetRegion').click(function(e) {
         e.preventDefault(); // Prevent page from reloading.
-        document.getElementById("regionDropdown").value = "Choose Region";
+        document.getElementById("regionDropdown").value = "Select Region";
     });
     $('#resetFromDate').click(function(e) {
         e.preventDefault(); // Prevent page from reloading.
