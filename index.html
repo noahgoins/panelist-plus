@@ -11,8 +11,27 @@
     <body>
         <div class="container mt-4">
             <div class="row">
+                <div class="col-6"></div> <!-- Column for padding -->
                 <div class="col-6">
-                    <div class="card card-body">
+                    <!-- Results/Data Panel Tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="results-tab" data-bs-toggle="tab" data-bs-target="#results-tab-pane" type="button" role="tab" aria-controls="results-tab-pane" aria-selected="true">Results</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="matrix-tab" data-bs-toggle="tab" data-bs-target="#matrix-tab-pane" type="button" role="tab" aria-controls="matrix-tab-pane" aria-selected="false">Matrix</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="players-tab" data-bs-toggle="tab" data-bs-target="#players-tab-pane" type="button" role="tab" aria-controls="players-tab-pane" aria-selected="false">Players</button>
+                        </li>
+                    </ul>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <!-- Query Form Panel -->
+                    <div class="card card-body h-100">
                         <form id="queryData" method="post">
                             <h3>Location</h3>
                             <p>Query tournaments by location. Choose a country and a territory if applicable. Country selection is required but territory can be omitted if desired.</p>
@@ -21,52 +40,11 @@
                                 <select id="countryDropdown" class="form-select" name="country" form="queryData">
                                     <!-- Note: we could maybe run a query to determine which countries are available in start.gg and only provide options for those. -->
                                     <option selected disabled>Choose Country</option>
+                                    <option value="United States">United States</option>
                                     <option value="Australia">Australia</option>
                                     <option value="Canada">Canada</option>
                                     <option value="Japan">Japan</option>
                                     <option value="United Kingdom">United Kingdom</option>
-                                    <option value="United States">United States</option>
-                                    <option disabled></option> <!-- A space between top countries and rest... can be better implemented. -->
-                                    <option value="Austria">Austria</option>
-                                    <option value="Belgium">Belgium</option>
-                                    <option value="Brazil">Brazil</option>
-                                    <option value="China">China</option>
-                                    <option value="Costa Rica">Costa Rica</option>
-                                    <option value="Denmark">Denmark</option>
-                                    <option value="Ecuador">Ecuador</option>
-                                    <option value="Finland">Finland</option>
-                                    <option value="France">France</option>
-                                    <option value="Germany">Germany</option>
-                                    <option value="Greece">Greece</option>
-                                    <option value="Greenland">Greenland</option>
-                                    <option value="Hong Kong">Hong Kong</option>
-                                    <option value="Iceland">Iceland</option>
-                                    <option value="India">India</option>
-                                    <option value="Indonesia">Indonesia</option>
-                                    <option value="Ireland">Ireland</option>
-                                    <option value="Italy">Italy</option>
-                                    <option value="Mexico">Mexico</option>
-                                    <option value="Netherlands">Netherlands</option>
-                                    <option value="New Zealand">New Zealand</option>
-                                    <option value="Norway">Norway</option>
-                                    <option value="Panama">Panama</option>
-                                    <option value="Papua New Guinea">Papua New Guinea</option>
-                                    <option value="Paraguay">Paraguay</option>
-                                    <option value="Peru">Peru</option>
-                                    <option value="Philippines">Philippines</option>
-                                    <option value="Poland">Poland</option>
-                                    <option value="Portugal">Portugal</option>
-                                    <option value="Puerto Rico">Puerto Rico</option>
-                                    <option value="Romania">Romania</option>
-                                    <option value="Russian Federation">Russia</option>
-                                    <option value="Singapore">Singapore</option>
-                                    <option value="South Africa">South Africa</option>
-                                    <option value="South Korea">South Korea</option>
-                                    <option value="Spain">Spain</option>
-                                    <option value="Sweden">Sweden</option>
-                                    <option value="Switzerland">Switzerland</option>
-                                    <option value="Taiwan">Taiwan</option>
-                                    <option value="Thailand">Thailand</option>
                                 </select>
                             </div>
                             <div id="regionCollapsible" class="collapse mb-3">
@@ -131,6 +109,7 @@
                                 </div>
                                 
                             </div>
+                            <hr>
                             <h3>Date Range</h3>
                             <p>Query tournaments from one date to another. Either can be omitted if desired.</p>
                             <div class="mb-3 mt-3">
@@ -156,49 +135,318 @@
                             </div>
                         </div>
                     </div>
-                    
                 </div>
                 <div class="col-6">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="results-tab" data-bs-toggle="tab" data-bs-target="#results-tab-pane" type="button" role="tab" aria-controls="results-tab-pane" aria-selected="true">Results</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="matrix-tab" data-bs-toggle="tab" data-bs-target="#matrix-tab-pane" type="button" role="tab" aria-controls="matrix-tab-pane" aria-selected="false">Matrix</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="players-tab" data-bs-toggle="tab" data-bs-target="#players-tab-pane" type="button" role="tab" aria-controls="players-tab-pane" aria-selected="false">Players</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content card card-body" id="tabContent">
+                    <!-- Results/Data Panel -->
+                    <div class="tab-content card card-body h-100" id="tabContent">
+                        <!-- Results Panel -->
                         <div class="tab-pane fade show active" id="results-tab-pane" role="tabpanel" aria-labelledby="results-tab" tabindex="0">
-                            <div class="card card-body p-1">
-                                <div class="d-flex">
-                                    <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
-                                    <div class="px-1">1 - 2</div>
-                                    <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
-                                </div>
-                            </div>
-                            <div class="card card-body p-1">
-                                <div class="d-flex">
-                                    <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
-                                    <div class="px-1">1 - 2</div>
-                                    <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
-                                </div>
-                            </div>
-                            <div class="card card-body p-1">
-                                <div class="d-flex">
-                                    <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
-                                    <div class="px-1">1 - 2</div>
-                                    <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
-                                </div>
+                            <h4 class="text-center">All Available Sets</h4>
+                            <div class="card card-body p-0 overflow-auto" style="max-height: 500px;">
+                                <table class="table table-striped table-hover m-0">
+                                    <tbody>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        <tr><td>
+                                            <div class="d-flex">
+                                                <div class="px-1 flex-grow-1 text-end"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1">0 - 0</div>
+                                                <div class="px-1 flex-grow-1 text-start"><span class="fst-italic">Sponsor</span> | Player</div>
+                                                <div class="px-1 flex-grow-1 text-center">[Tournament]</div>
+                                            </div>
+                                        </td></tr>
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                        <!-- Matrix Panel -->
                         <div class="tab-pane fade" id="matrix-tab-pane" role="tabpanel" aria-labelledby="matrix-tab" tabindex="0">
-                            TODO: A head to head matrix table is supposed to go here.
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="card card-body overflow-auto" style="max-height: 210px;">
+                                        <h5>Select Players</h5>
+                                        <div class="form-check">
+                                            <input type="checkbox" id="playerA" class="form-check-input" checked><label class="form-check-label" for="playerA">Player A</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" id="playerB" class="form-check-input" checked><label class="form-check-label" for="playerB">Player B</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" id="playerC" class="form-check-input" checked><label class="form-check-label" for="playerC">Player C</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" id="playerD" class="form-check-input" checked><label class="form-check-label" for="playerD">Player D</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" id="playerE" class="form-check-input" checked><label class="form-check-label" for="playerE">Player E</label>
+                                        </div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                        <div class="form-check"><input type="checkbox" id="player" class="form-check-input"><label class="form-check-label" for="player">Player</label></div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="card card-body h-100">
+                                        Head-to-Head Controls Placeholder?
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <table class="table table-bordered text-center">
+                                <tr>
+                                    <td></td>
+                                    <td>Player A</td>
+                                    <td>Player B</td>
+                                    <td>Player C</td>
+                                    <td>Player D</td>
+                                    <td>Player E</td>
+                                </tr>
+                                <tr>
+                                    <td>Player A</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                </tr>
+                                <tr>
+                                    <td>Player B</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                </tr>
+                                <tr>
+                                    <td>Player C</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                </tr>
+                                <tr>
+                                    <td>Player D</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                </tr>
+                                <tr>
+                                    <td>Player E</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                    <td>0 - 0</td>
+                                </tr>
+                            </table>
                         </div>
+                        <!-- Players Panel -->
                         <div class="tab-pane fade" id="players-tab-pane" role="tabpanel" aria-labelledby="players-tab" tabindex="0">
-                            TODO: Sorting players by different stats.
+                            <div class="card card-body p-0 overflow-auto" style="max-height: 500px;">
+                                <table class="table table-striped table-hover m-0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" >Tag</th>
+                                            <th scope="col" >W - L (%)</th>
+                                            <th scope="col" >PR Events</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Player A</td>
+                                            <td>0 - 0 (0%)</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Player B</td>
+                                            <td>0 - 0 (0%)</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Player C</td>
+                                            <td>0 - 0 (0%)</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Player D</td>
+                                            <td>0 - 0 (0%)</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Player E</td>
+                                            <td>0 - 0 (0%)</td>
+                                            <td>0</td>
+                                        </tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                        <tr><td>Player</td><td>0 - 0 (0%)</td><td>0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
