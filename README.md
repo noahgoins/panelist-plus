@@ -1,2 +1,2 @@
-# startgg-companion
-A companion web app to help tournament organizers using the start.gg API.
+# Panelist Plus
+A utility app to help Power Ranking panelists in determining PR.
