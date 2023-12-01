@@ -8,9 +8,10 @@ The app is built using React and queries are made to start.gg using the GraphQL 
 ## Dependencies
 The source code does not include required dependencies so they must be installed before compiling. The following are the dependencies and how to download them.
 - NodeJS: Follow install instructions on the [website](nodejs.org).
-- Fetch: Run `npm install node-fetch` in the project directory with your terminal.
-- GraphQL: Run `npm install graphql --save` in the project directory with your terminal.
-- React: Run `npm install -g create-react-app` in the project directory with your terminal. 
+- Fetch: Run `npm install node-fetch` in the project directory.
+- GraphQL: Run `npm install graphql --save` in the project directory.
+- React: Run `npm install -g create-react-app` in the project directory. 
+- React Bootstrap: Run `npm install react-bootstrap bootstrap` in the project directory.
 
 ## Compiling the React App
 Open the project directory in your terminal and run `npm start` to compile and run the React app on your machine. Open your preferred browser and type `localhost:3000` in the address bar to open the app. 
