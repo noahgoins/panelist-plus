@@ -5,6 +5,6 @@ const playerResult = require('./playerResults');
 
 
 eventId.getEventId('don-t-get-tilted-95-1', 'ultimate-singles');
-//eventSets.getCompletedMatches(1026965);
-playerResult.playerResults(1026965,'CrayolaBrain');
+eventSets.getCompletedMatches(1026965);
+//playerResult.playerResults(1026965,'Mewo');
 //eventDateSort.searchByDate()
