@@ -20,8 +20,11 @@ If you want to build the app run `npm run build` in the project directory to cre
 
 ## Credits
 Noah Goins: Full-stack development and project management.
+
 Jackson Kash: Back-end development and GraphQL queries testing.
+
 Kevin Ramirez: Conception and additional back-end development.
+
 Anthony Lopez: Front-end styling and graphics.
 
 ## License
