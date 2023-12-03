@@ -1,6 +1,8 @@
 import QueryFormPanel from "./components/QueryFormPanel";
 import ResultsPanel from "./components/ResultsPanel";
 
+import fetchQuery from "./utils/query";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const { Container, Row, Col } = require("react-bootstrap");
