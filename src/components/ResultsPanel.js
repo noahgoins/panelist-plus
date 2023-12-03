@@ -124,7 +124,7 @@ function ResultsPanel({tempSetData, results}) {
                                     <Card>
                                         <CardBody className="overflow-auto" style={{maxHeight: 210 + 'px'}}>
                                             <div className="d-flex">
-                                                <Button fluid variant="primary" className="flex-grow-1" onClick={generateMatrix}>Generate Matrix</Button>
+                                                <Button variant="primary" className="flex-grow-1" onClick={generateMatrix}>Generate Matrix</Button>
                                             </div>
                                         </CardBody>
                                     </Card>
