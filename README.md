@@ -7,13 +7,16 @@ The app is built using React and queries are made to start.gg using the GraphQL 
 
 ## Dependencies
 The source code does not include required dependencies so they must be installed before compiling. The following are the dependencies and how to download them.
-- NodeJS: Follow install instructions on the [website](nodejs.org).
+- NodeJS: Follow install instructions on the [website](https://nodejs.org).
+- Dotenv: Run `npm install dotenv` in the project directory.
 - Fetch: Run `npm install node-fetch` in the project directory.
 - GraphQL: Run `npm install graphql` in the project directory.
 - React: Run `npm install create-react-app` in the project directory. 
 - React Bootstrap: Run `npm install react-bootstrap bootstrap` in the project directory.
 
 ## Compiling the React App
+In order for the app to function properly you must first provide it with an API key to start.gg's API. First, make a duplicate of the `.env.template` file and rename it to `.env`. Follow [this guide](https://developer.start.gg/docs/authentication) to learn how to get access to your unique API key. Once you have the key, paste it after the `API_KEY=` field in the `.env.` file. **DO NOT** include `Bearer` as part of the token string, only include the token itself.
+
 Open the project directory in your terminal and run `npm start` to compile and run the React app on your machine. Open your preferred browser and type `localhost:3000` in the address bar to open the app. 
 
 If you want to build the app run `npm run build` in the project directory to create a production build of the app. The build will be located in the newly created `build\` directory.
