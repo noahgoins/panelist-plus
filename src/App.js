@@ -1,7 +1,11 @@
 import QueryFormPanel from "./components/QueryFormPanel";
 import ResultsPanel from "./components/ResultsPanel";
 
+import fetchQuery from "./utils/query";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './stylesheet.css';
+import banner from './banner.png';
 
 const { Container, Row, Col } = require("react-bootstrap");
 
@@ -105,6 +109,9 @@ function App() {
 
     return (
         <Container className="mt-4">
+            <div className="headers">
+                <img src={banner} alt="PanelistPlusLogo" class="center"/>
+            </div>
             <Row>
                 <Col>
                     <QueryFormPanel onFormSubmit={handleQuerySubmit} unixTime="true" restrictRange="true"/>
